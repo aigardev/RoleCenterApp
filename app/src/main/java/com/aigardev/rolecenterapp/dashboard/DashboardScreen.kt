@@ -1,11 +1,9 @@
 package com.aigardev.rolecenterapp.dashboard
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -21,7 +19,7 @@ import androidx.compose.ui.unit.dp
 fun DashboardScreen() {
     Column(
         modifier = Modifier
-            .fillMaxSize() // Ocupa todo el espacio disponible
+            .fillMaxSize() // Ocupa el espacio disponible
             .padding(16.dp), // Añade un padding general
         horizontalAlignment = Alignment.CenterHorizontally, // Centra horizontalmente los elementos
         verticalArrangement = Arrangement.Center // Centra verticalmente los elementos
