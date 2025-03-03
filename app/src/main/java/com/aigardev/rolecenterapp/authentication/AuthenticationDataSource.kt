@@ -7,7 +7,8 @@ class AuthenticationDataSource {
         "usuario1" to "clave1",
         "usuario2" to "clave2",
         "testuser" to "password",
-        "admin" to "admin123"
+        "admin" to "admin123",
+        "123" to "123"
     )
 
     // Función para simular la autenticación.
