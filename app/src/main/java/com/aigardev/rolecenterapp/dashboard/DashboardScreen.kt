@@ -20,12 +20,13 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import com.aigardev.rolecenterapp.core.ui.components.AppBarWithMenu
 import com.aigardev.rolecenterapp.core.ui.components.ReusableComponents.DashboardButton
 import com.aigardev.rolecenterapp.R
+import com.aigardev.rolecenterapp.authentication.LoginViewModel
 import com.aigardev.rolecenterapp.core.navigation.Screen
 import com.aigardev.rolecenterapp.core.ui.components.AppDrawer
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DashboardScreen(navController: NavController) {
+fun DashboardScreen(navController: NavController, loginViewModel: LoginViewModel) {
     val drawerState = rememberDrawerState(DrawerValue.Closed) // Estado del Drawer
 
     ModalNavigationDrawer(
@@ -34,6 +35,8 @@ fun DashboardScreen(navController: NavController) {
             AppDrawer(
                 drawerState = drawerState,
                 onLogoutClick = {
+                    /*
+                    loginViewModel.logout()
                     navController.navigate(Screen.Login.route) {
                         popUpTo(navController.graph.findStartDestination().id) {
                             saveState = false
@@ -41,7 +44,8 @@ fun DashboardScreen(navController: NavController) {
                         }
                         launchSingleTop = true
                         restoreState = false
-                    }
+                    }*/
+                    loginViewModel.logout() // Llama a logout() en el ViewModel
                 }
             )
         },
@@ -111,6 +115,7 @@ fun DashboardScreen(navController: NavController) {
 @Composable
 fun DashboardScreenPreview() {
     DashboardScreen(
-        navController = TODO()
+        navController = TODO(),
+        loginViewModel = TODO()
     ) // Vista previa de DashboardScreen
 }

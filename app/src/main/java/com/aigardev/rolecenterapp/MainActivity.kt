@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
@@ -39,9 +41,11 @@ class MainActivity : ComponentActivity() {
 fun AppNavigation() {
     val navController = rememberNavController()
 
+    // Creamos las instancias del DataSource y Repository
     val authenticationDataSource = AuthenticationDataSource()
     val authenticationRepository = DefaultAuthenticationRepository(authenticationDataSource)
 
+    // Creamos el LoginViewModel, pasando el AuthenticationRepository como dependencia
     val loginViewModel: LoginViewModel = viewModel(
         factory = viewModelFactory {
             initializer {
@@ -50,7 +54,9 @@ fun AppNavigation() {
         }
     )
 
-    NavHost(navController = navController, startDestination = Screen.Login.route) {
+    val isLoggedIn by loginViewModel.isLoggedIn.collectAsState() // OBSERVA el StateFlow
+
+    NavHost(navController = navController, startDestination = if (isLoggedIn) Screen.Dashboard.route else Screen.Login.route) {
         composable(Screen.Login.route) {
             LoginScreen(
                 onLoginSuccess = {
@@ -62,20 +68,21 @@ fun AppNavigation() {
             )
         }
         composable(Screen.Dashboard.route) {
-            DashboardScreen(navController = navController) // navController como parámetro
+            DashboardScreen(navController = navController, loginViewModel = loginViewModel) // navController como parámetro
         }
-//        composable(Screen.CreateSheet.route) {
-//            CreateSheetScreen()
-//        }
-//        composable(Screen.ListSheets.route) {
-//            ListSheetsScreen()
-//        }
-//        composable(Screen.CreateGame.route) {
-//            CreateGameScreen()
-//        }
-//        composable(Screen.ListGames.route) {
-//            ListGamesScreen()
-//        }
+        /*
+        composable(Screen.CreateSheet.route) {
+            CreateSheetScreen()
+        }
+        composable(Screen.ListSheets.route) {
+            ListSheetsScreen()
+        }
+        composable(Screen.CreateGame.route) {
+            CreateGameScreen()
+        }
+        composable(Screen.ListGames.route) {
+            ListGamesScreen()
+        }*/
     }
 }
 

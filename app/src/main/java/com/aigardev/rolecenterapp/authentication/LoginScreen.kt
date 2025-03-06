@@ -13,14 +13,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import kotlinx.coroutines.launch
 
 @Composable
 fun LoginScreen(
     onLoginSuccess: () -> Unit, // Callback para éxito de login
-    loginViewModel: LoginViewModel = viewModel() // Recibimos el LoginViewModel (con viewModel())
+    loginViewModel: LoginViewModel // Recibimos el LoginViewModel (con viewModel())
 ) {
     // Observamos el estado de la UI desde el ViewModel
-    val loginUiState by loginViewModel.loginUiState.collectAsState()
+    //val loginUiState by loginViewModel.loginUiState.collectAsState()
+    val coroutineScope = rememberCoroutineScope()
+    var showError by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -48,7 +51,15 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = { loginViewModel.login() }, // Llamamos a la función login del ViewModel
+            onClick = {
+                coroutineScope.launch { // Lanza una corrutina
+                    if (loginViewModel.login()) {
+                        onLoginSuccess()
+                    } else {
+                        showError = true
+                    }
+                }
+            },
             colors = ButtonDefaults.buttonColors(
                 containerColor = MaterialTheme.colorScheme.primary
             )
@@ -57,6 +68,7 @@ fun LoginScreen(
         }
 
         // Reaccionamos a los diferentes estados del LoginUiState
+        /*
         when (val uiState = loginUiState) {
             LoginViewModel.LoginUiState.Initial -> {} // No hacemos nada en el estado inicial
             LoginViewModel.LoginUiState.Loading -> { // Estado de carga
@@ -75,12 +87,15 @@ fun LoginScreen(
                     color = MaterialTheme.colorScheme.error // Con color de error del tema
                 )
             }
-        }
+        }*/
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun LoginScreenPreview() {
-    LoginScreen(onLoginSuccess = {})
+    LoginScreen(
+        onLoginSuccess = {},
+        loginViewModel = viewModel() // Usamos viewModel() para obtener el LoginViewModel
+    )
 }

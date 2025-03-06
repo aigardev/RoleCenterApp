@@ -1,5 +1,5 @@
 package com.aigardev.rolecenterapp.authentication
 
 interface AuthenticationRepository {
-    suspend fun authenticate(username: String, password: String): Result<String>
+    suspend fun login(username: String, password: String): Boolean // Cambio de nombre y tipo de retorno
 }

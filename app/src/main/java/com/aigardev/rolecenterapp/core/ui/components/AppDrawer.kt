@@ -69,7 +69,6 @@ fun AppDrawer(
                 }) {
                     Text(stringResource(id = R.string.logout))
                 }
-                //FIXME: No funciona el logout
             },
             dismissButton = {
                 TextButton(onClick = { showLogoutDialog = false }) {
