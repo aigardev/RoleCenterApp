@@ -16,7 +16,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import com.aigardev.rolecenterapp.core.ui.components.AppBarWithMenu
 import com.aigardev.rolecenterapp.core.ui.components.ReusableComponents.DashboardButton
 import com.aigardev.rolecenterapp.R
