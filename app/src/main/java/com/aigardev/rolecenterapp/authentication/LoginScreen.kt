@@ -9,9 +9,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.aigardev.rolecenterapp.R
 import kotlinx.coroutines.launch
 
 @Composable
@@ -31,20 +33,20 @@ fun LoginScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Bienvenido a RollSheet App", style = MaterialTheme.typography.titleLarge)
+        Text(stringResource(id = R.string.welcome), style = MaterialTheme.typography.titleLarge)
         Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedTextField(
             value = loginViewModel.username.value, // Valor desde el ViewModel
             onValueChange = { loginViewModel.onUsernameChanged(it) }, // Actualización a través del ViewModel
-            label = { Text("Usuario") }
+            label = { Text(stringResource(id = R.string.user)) }
         )
         Spacer(modifier = Modifier.height(8.dp))
 
         OutlinedTextField(
             value = loginViewModel.password.value, // Valor desde el ViewModel
             onValueChange = { loginViewModel.onPasswordChanged(it) }, // Actualización a través del ViewModel
-            label = { Text("Contraseña") },
+            label = { Text(stringResource(id = R.string.password)) },
             visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation()
         )
         Spacer(modifier = Modifier.height(16.dp))
@@ -63,7 +65,7 @@ fun LoginScreen(
                 containerColor = MaterialTheme.colorScheme.primary
             )
         ) {
-            Text("Login")
+            Text(stringResource(id = R.string.login_button))
         }
 
         // Reaccionamos a los diferentes estados del LoginUiState
