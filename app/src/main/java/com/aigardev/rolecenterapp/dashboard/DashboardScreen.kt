@@ -34,18 +34,15 @@ fun DashboardScreen(navController: NavController, loginViewModel: LoginViewModel
             AppDrawer(
                 drawerState = drawerState,
                 onLogoutClick = {
-                    /*
-                    loginViewModel.logout()
-                    navController.navigate(Screen.Login.route) {
-                        popUpTo(navController.graph.findStartDestination().id) {
-                            saveState = false
-                            inclusive = true
-                        }
-                        launchSingleTop = true
-                        restoreState = false
-                    }*/
                     loginViewModel.logout() // Llama a logout() en el ViewModel
-                }
+                },
+                onNavigateToDashboard = { navController.navigate(Screen.Dashboard.route) }, // Navegación
+                onNavigateToCreateSheet = { navController.navigate(Screen.CreateSheet.route) }, // Navegación
+                onNavigateToListSheets = { navController.navigate(Screen.ListSheets.route) }, // Navegación
+                onNavigateToCreateGame = { navController.navigate(Screen.CreateGame.route) }, // Navegación
+                onNavigateToListGames = { navController.navigate(Screen.ListGames.route) },  // Navegación
+                onNavigateToProfile = { navController.navigate(Screen.Profile.route) }, // Navegación
+                onNavigateToSettings = { navController.navigate(Screen.Settings.route) } //Navegacion
             )
         },
         gesturesEnabled = drawerState.isOpen // Desactivar gestos cuando está cerrado
@@ -74,13 +71,13 @@ fun DashboardScreen(navController: NavController, loginViewModel: LoginViewModel
                 ) {
                     DashboardButton(
                         icon = Icons.Filled.Add,
-                        text = "Crear Ficha",
+                        text = stringResource(id = R.string.create_sheet),
                         onClick = { navController.navigate(Screen.CreateSheet.route) },
                         modifier = Modifier.weight(1f)
                     )
                     DashboardButton(
                         icon = Icons.AutoMirrored.Filled.List,
-                        text = "Listar Fichas",
+                        text = stringResource(id = R.string.list_sheets),
                         onClick = { navController.navigate(Screen.ListSheets.route) },
                         modifier = Modifier.weight(1f)
                     )
@@ -94,13 +91,13 @@ fun DashboardScreen(navController: NavController, loginViewModel: LoginViewModel
                 ) {
                     DashboardButton(
                         icon = Icons.Filled.Add,
-                        text = "Crear Partida",
+                        text = stringResource(id = R.string.create_game),
                         onClick = { navController.navigate(Screen.CreateGame.route) },
                         modifier = Modifier.weight(1f)
                     )
                     DashboardButton(
                         icon = Icons.AutoMirrored.Filled.List,
-                        text = "Listar Partidas",
+                        text = stringResource(id = R.string.list_games),
                         onClick = { navController.navigate(Screen.ListGames.route) },
                         modifier = Modifier.weight(1f)
                     )

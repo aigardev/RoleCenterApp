@@ -7,4 +7,6 @@ sealed class Screen(val route: String) {
     object ListSheets : Screen("list_sheets")
     object CreateGame : Screen("create_game")
     object ListGames : Screen("list_games")
+    object Profile : Screen("profile")
+    object Settings : Screen("settings")
 }
