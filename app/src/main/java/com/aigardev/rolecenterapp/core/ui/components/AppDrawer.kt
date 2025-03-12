@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DrawerState // Importa DrawerState
@@ -42,8 +43,8 @@ fun AppDrawer(
     onNavigateToListSheets: () -> Unit, // Callback para navegar
     onNavigateToCreateGame: () -> Unit, // Callback para navegar
     onNavigateToListGames: () -> Unit, // Callback para navegar
-    //onNavigateToProfile: () -> Unit // Callback para navegar
-    //onNavigateToSettings: () -> Unit, // Callback para navegar
+    onNavigateToProfile: () -> Unit, // Callback para navegar
+    onNavigateToSettings: () -> Unit // Callback para navegar
 ) {
     val coroutineScope = rememberCoroutineScope()
     var showLogoutDialog by remember { mutableStateOf(false) } //Estado del AlertDialog
@@ -111,7 +112,9 @@ fun AppDrawer(
 
             )
 
-            /*NavigationDrawerItem(
+            Spacer(modifier = Modifier.height(16.dp))
+
+            NavigationDrawerItem(
                 label = { Text(stringResource(id = R.string.profile)) },
                 selected = false,
                 onClick = {
@@ -119,8 +122,8 @@ fun AppDrawer(
                     onNavigateToProfile() // Usar el callback
                 },
                 icon = { Icon(imageVector = Icons.Default.Person, contentDescription = stringResource(id = R.string.profile)) } // Icono
-             */
-            /*
+            )
+
             NavigationDrawerItem(
                 label = { Text(stringResource(id = R.string.settings)) },
                 selected = false,
@@ -129,7 +132,7 @@ fun AppDrawer(
                     onNavigateToSettings() // Usar el callback
                 },
                 icon = { Icon(imageVector = Icons.Default.Settings, contentDescription = stringResource(id = R.string.settings)) } // Icono
-            )*/
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 

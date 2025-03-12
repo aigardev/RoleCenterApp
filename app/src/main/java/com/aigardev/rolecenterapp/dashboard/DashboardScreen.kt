@@ -41,7 +41,8 @@ fun DashboardScreen(navController: NavController, loginViewModel: LoginViewModel
                 onNavigateToListSheets = { navController.navigate(Screen.ListSheets.route) }, // Navegación
                 onNavigateToCreateGame = { navController.navigate(Screen.CreateGame.route) }, // Navegación
                 onNavigateToListGames = { navController.navigate(Screen.ListGames.route) },  // Navegación
-                //onNavigateToSettings = { navController.navigate(Screen.Settings.route) } // Navegación
+                onNavigateToProfile = { navController.navigate(Screen.Profile.route) }, // Navegación
+                onNavigateToSettings = { navController.navigate(Screen.Settings.route) } //Navegacion
             )
         },
         gesturesEnabled = drawerState.isOpen // Desactivar gestos cuando está cerrado
