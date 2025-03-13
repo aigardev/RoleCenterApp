@@ -27,4 +27,25 @@
     <!--Logout AlertDialog-->
     <string name="logout_dialog_title">Cerrar Sesión</string>
     <string name="logout_dialog_message">¿Estás seguro de que quieres cerrar sesión?</string>
+
+    <!--Empty Screen-->
+    <string name="empty_screen_text">No esta desarrollado</string>
+    <string name="empty_screen_button">Botón</string>
+
+    <!--Character Sheet List-->
+    <string name="empty_list_sheets">No hay fichas de personaje. ¡Crea una!</string>
+    <string name="game_system_text">Juego de Rol: %s</string>
+    <string name="class_race_level_text">Clase: %1$s, Raza: %2$s, Nivel: %3$d</string>
+    <string name="strength_abbr">FUE</string>
+    <string name="dexterity_abbr">DES</string>
+    <string name="constitution_abbr">CON</string>
+    <string name="intelligence_abbr">INT</string>
+    <string name="wisdom_abbr">SAB</string>
+    <string name="charisma_abbr">CAR</string>
+
+    <string name="level">Lvl.%s</string>
+    <string name="profession">Profesión: %s</string>
+    <string name="race">Raza: %s</string>
+    <string name="game">Juego: %s</string>
+    <string name="party">Partida: %s</string>
 </resources>
