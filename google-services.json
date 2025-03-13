@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "896802843567",
+    "project_id": "role-center-app",
+    "storage_bucket": "role-center-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896802843567:android:f633f2ff93c4312de0dd5a",
+        "android_client_info": {
+          "package_name": "com.aigardev.rolecenterapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896802843567-dt49t15rvpgo8mpj41drcuhc8bh5d4f8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aigardev.rolecenterapp",
+            "certificate_hash": "b8b517e8c3e0eceec6372852da90a7e53134bb3a"
+          }
+        },
+        {
+          "client_id": "896802843567-ltloc2ua0ktkrdjqd8a287d6ma0s0qun.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkDktD6m86LNa_BiYHWUrYhZGpILrd6RU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896802843567-ltloc2ua0ktkrdjqd8a287d6ma0s0qun.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
