@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.List
 import androidx.compose.material.icons.filled.List
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,10 +27,10 @@ import com.aigardev.rolecenterapp.R
 
 @Composable
 fun EmptyScreen(
+    modifier: Modifier = Modifier, // Modificador para personalizar desde fuera
     imageVector: ImageVector? = null, // Icono (ImageVector) - Opcional
     imageDrawable: Int? = null, // Icono (Drawable Resource ID) - Opcional
     text: String, // Texto descriptivo
-    modifier: Modifier = Modifier, // Modificador para personalizar desde fuera
 ){
     Column(
         modifier = modifier.fillMaxSize(),
@@ -69,7 +70,7 @@ fun EmptyScreen(
 fun EmptyScreenPreview() {
     MaterialTheme {
         EmptyScreen(
-            imageVector = Icons.Default.List, // Icono de ejemplo
+            imageVector = Icons.AutoMirrored.Rounded.List, // Icono de ejemplo
             text = stringResource(id = R.string.empty_screen_text)
         )
     }

@@ -1,6 +1,5 @@
 package com.aigardev.rolecenterapp.charactersheets
 
-import com.aigardev.rolecenterapp.core.data.models.CharacterSheet
 import com.aigardev.rolecenterapp.core.data.models.GyGSheet
 
 // Define los estados de la UI

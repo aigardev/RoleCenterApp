@@ -2,7 +2,6 @@ package com.aigardev.rolecenterapp.charactersheets
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aigardev.rolecenterapp.core.data.models.CharacterSheet
 import com.aigardev.rolecenterapp.core.data.models.GyGSheet
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
