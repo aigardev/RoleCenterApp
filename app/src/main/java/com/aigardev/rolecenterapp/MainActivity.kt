@@ -76,7 +76,7 @@ fun AppNavigation() {
             CreateSheetScreen()
         }*/
         composable(Screen.ListSheets.route) {
-            ListSheetsScreen()
+            ListSheetsScreen(navController = navController)
         }
         /*
         composable(Screen.CreateGame.route) {

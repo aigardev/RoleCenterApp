@@ -3,6 +3,7 @@
 
     <!--Basics-->
     <string name="cancel">Cancelar</string>
+    <string name="back">Volver</string>
 
     <!--Login-->
     <string name="welcome">Bienvenido a RollSheet App</string>
@@ -17,7 +18,7 @@
     <!--AppDrawer Options-->
     <string name="home">Inicio</string>
     <string name="create_sheet">Crear Ficha</string>
-    <string name="list_sheets">Listar Fichas</string>
+    <string name="list_sheets">Fichas de Personaje</string>
     <string name="create_game">Crear Partida</string>
     <string name="list_games">Listar Partidas</string>
     <string name="profile">Perfil</string>

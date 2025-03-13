@@ -31,19 +31,28 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.aigardev.rolecenterapp.R
 import com.aigardev.rolecenterapp.core.data.models.GyGSheet
+import com.aigardev.rolecenterapp.core.ui.components.AppBarWithBackButton
 import com.aigardev.rolecenterapp.core.ui.components.EmptyScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListSheetsScreen(
-    viewModel: ListSheetsViewModel = viewModel()
+    viewModel: ListSheetsViewModel = viewModel(),
+    navController: NavController
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
-    Scaffold() {
-        innerPadding ->
+    Scaffold(
+        topBar = {
+            AppBarWithBackButton(
+                onBackClick = { navController.popBackStack() },
+                title = stringResource(id = R.string.list_sheets)
+            )
+        }
+    ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
             when (uiState) {
                 is ListSheetsUiState.Loading -> {
@@ -88,62 +97,10 @@ fun ErrorScreen(message: String) {
 fun CharacterSheetList(sheets: List<GyGSheet>) {
     LazyColumn {
         items(sheets) { sheet ->
-            //CharacterSheetItem(sheet)
             GyGSheetItem(sheet)
         }
     }
 }
-/*
-@Composable
-fun CharacterSheetItem(sheet: CharacterSheet) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp),
-        elevation =  CardDefaults.cardElevation(defaultElevation = 4.dp)
-    ) {
-        Column(
-            modifier = Modifier
-                .padding(16.dp)
-        ) {
-            Text(text = sheet.name, style = MaterialTheme.typography.titleLarge)
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(text = stringResource(R.string.game_system_text, sheet.gameSystem), style = MaterialTheme.typography.bodyMedium)
-            Text(text = stringResource(R.string.class_race_level_text, sheet.characterClass, sheet.race, sheet.level), style = MaterialTheme.typography.bodyMedium)
-            /*
-            Spacer(modifier = Modifier.height(8.dp))
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Column {
-                    Text(text = stringResource(R.string.strength_abbr), style = MaterialTheme.typography.bodySmall)
-                    Text(text = sheet.strength.toString(), style = MaterialTheme.typography.bodyLarge)
-                }
-                Column {
-                    Text(text = stringResource(R.string.dexterity_abbr), style = MaterialTheme.typography.bodySmall)
-                    Text(text = sheet.dexterity.toString(), style = MaterialTheme.typography.bodyLarge)
-                }
-                Column {
-                    Text(text = stringResource(R.string.constitution_abbr), style = MaterialTheme.typography.bodySmall)
-                    Text(text = sheet.constitution.toString(), style = MaterialTheme.typography.bodyLarge)
-                }
-                Column {
-                    Text(text = stringResource(R.string.intelligence_abbr), style = MaterialTheme.typography.bodySmall)
-                    Text(text = sheet.intelligence.toString(), style = MaterialTheme.typography.bodyLarge)
-                }
-                Column {
-                    Text(text = stringResource(R.string.wisdom_abbr), style = MaterialTheme.typography.bodySmall)
-                    Text(text = sheet.wisdom.toString(), style = MaterialTheme.typography.bodyLarge)
-                }
-                Column {
-                    Text(text = stringResource(R.string.charisma_abbr), style = MaterialTheme.typography.bodySmall)
-                    Text(text = sheet.charisma.toString(), style = MaterialTheme.typography.bodyLarge)
-                }
-            }*/
-        }
-    }
-}*/
 
 @Composable
 fun GyGSheetItem(sheet: GyGSheet) {
@@ -201,7 +158,6 @@ fun GyGSheetItem(sheet: GyGSheet) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column {
-                    //Text(text = stringResource(R.string.party, sheet.party ?: ""), style = MaterialTheme.typography.bodySmall)
                     sheet.party?.let { party -> // 'party' dentro de este bloque es un String, no un String?
                         Text(
                             text = stringResource(R.string.party, party),
@@ -214,28 +170,6 @@ fun GyGSheetItem(sheet: GyGSheet) {
         }
     }
 }
-
-/*
-@Preview
-@Composable
-fun CharacterSheetItemPreview() {
-    CharacterSheetItem(
-        CharacterSheet(
-                id = "1",
-                name = "LiquidJokey",
-                gameSystem = "Goblins & Grutas",
-                characterClass = "Mago",
-                race = "Humano",
-                level = 20,
-                strength = 10,
-                dexterity = 14,
-                constitution = 18,
-                intelligence = 22,
-                wisdom = 20,
-                charisma = 16
-        )
-    )
-}*/
 
 @Preview
 @Composable
