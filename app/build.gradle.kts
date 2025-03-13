@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -46,9 +47,17 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.material3)
-    implementation(libs.androidx.compose.material3.material3) // <-- ¡VERIFICA QUE TIENES ALGO SIMILAR A ESTO!
+    implementation(libs.androidx.compose.material3.material3)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.navigation.compose)
+    // Import the Firebase BoM
+    implementation(platform(libs.firebase.bom)) //  IMPORTANTE: Usa la última versión del BOM
+    // Firebase Authentication
+    implementation(libs.firebase.auth.ktx)
+    // Cloud Firestore
+    implementation(libs.firebase.firestore.ktx)
+    implementation(libs.firebase.analytics)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
